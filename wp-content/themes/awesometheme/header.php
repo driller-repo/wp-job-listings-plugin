@@ -9,6 +9,17 @@
 
     <?php wp_head(); ?>
 </head>
-<body>
+
+<?php
+
+    $awesomeClasses = ['awesome-class'];
+
+    if(is_front_page()) {
+        $awesomeClasses = ['awesome-class', 'front-page'];
+    }
+
+?>
+
+<body <?php body_class($awesomeClasses) ?>>
 
     <?php wp_nav_menu(['theme_location'=>'primary_menu']) ?>
