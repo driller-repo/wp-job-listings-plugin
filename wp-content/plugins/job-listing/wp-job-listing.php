@@ -17,3 +17,5 @@ if (! defined('ABSPATH')) {
 $dir = plugin_dir_path(__FILE__);
 
 require_once ($dir . 'wp-job-cpt.php');
+require_once ($dir . 'wp-job-render-admin.php');
+require_once ($dir . 'wp-job-fields.php');

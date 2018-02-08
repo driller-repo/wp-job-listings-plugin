@@ -49,7 +49,7 @@ function dwwp_register_post_type()
             'feeds' => true,
         ],
         'supports' => [
-            'title', 'editor', 'author', 'custom-fields'
+            'title',
         ]
     ];
 
