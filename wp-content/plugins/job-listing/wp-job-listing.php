@@ -33,8 +33,7 @@ function dwwp_register_post_type()
         'search_term'        => 'Search ' . $plural,
         'search_items'       => 'Search ' . $plural,
         'not_found'          => 'No job listings found.',
-        'not_found_in_trash' => 'No job listings found in Trash.',
-
+        'not_found_in_trash' => 'No job listings found in Trash.'
     ];
 
     $args = [
@@ -70,3 +69,45 @@ function dwwp_register_post_type()
 }
 
 add_action('init', 'dwwp_register_post_type');
+
+
+function dwwp_register_taxonomy()
+{
+    $singular = 'Location';
+    $plural = 'Locations';
+
+    $labels = [
+        'name'                          => $plural,
+        'singular_name'                 => $singular,
+        'popular_items'                 => 'Popular ' . $plural,
+        'parent_item'                   => null,
+        'parent_item_colon'             => null,
+        'add_name'                      => 'Add New',
+        'add_new_item'                  => 'Add New ' . $singular,
+        'new_item_name'                 => 'New ' . $singular,
+        'separate_items_with_commas'    => 'Separate ' .$plural .' with commas',
+        'add_or_remove_items'    => 'Add or remove ' .$plural,
+        'edit_item'                     => 'Edit ' . $singular,
+        'view_item'                     => 'View ' . $singular,
+        'all_items'                     => 'All ' . $plural,
+        'search_term'                   => 'Search ' . $plural,
+        'search_items'                  => 'Search ' . $plural,
+        'not_found'                     => 'No '.$plural.' found.',
+        'not_found_in_trash'            => 'No '.$plural.' found in Trash.',
+        'menu_name'                     => $plural
+    ];
+
+    $args = [
+        'hierarchical' => true,
+        'labels' => $labels,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'update_count_callback' => '_update_post_terms_count',
+        'query_var' => true,
+        'rewrite' => ['slug' => 'location'],
+    ];
+
+    register_taxonomy('location', 'job', $args);
+}
+
+add_action('init', 'dwwp_register_taxonomy');
